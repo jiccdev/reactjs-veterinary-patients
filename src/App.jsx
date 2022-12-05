@@ -6,7 +6,7 @@ import PatientList from './components/Patients/PatientList';
 
 const App = () => {
   return (
-    <div className="container-xl w-100 bg-slate-300">
+    <div className="container-lg w-100 h-screen bg-white">
       <Layout>
         <Header />
         <Form />
