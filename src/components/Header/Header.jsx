@@ -2,14 +2,14 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="uppercase">
-      <h1>
-        <span className="font-bold text-indigo-500 body-font font-poppins">
+    <header>
+      <h1 className="font-black text-center my-5 mx-2 text-xl xl:text-4xl">
+        <span className="body-font font-poppins text-indigo-500">
           Veterinary
         </span>{' '}
         Patient Follow-Ups
       </h1>
-    </div>
+    </header>
   );
 };
 

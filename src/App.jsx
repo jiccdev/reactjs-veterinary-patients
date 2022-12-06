@@ -6,11 +6,13 @@ import PatientList from './components/Patients/PatientList';
 
 const App = () => {
   return (
-    <div className="container-lg w-100 h-screen bg-white">
+    <div className="container-lg w-100 h-screen flex justify-center items-center">
       <Layout>
-        <Header />
-        <Form />
-        <PatientList />
+        {/* <Header /> */}
+        <div className="grid gap-4 lg:grid-cols-2">
+          <Form />
+          <PatientList />
+        </div>
       </Layout>
     </div>
   );
