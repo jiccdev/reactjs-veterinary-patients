@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PatientList from '../Patients/PatientList';
 
 const Form = () => {
-  const [errorMessage, setErrorMessage] = useState('');
+  const [patientList, setPatientList] = useState([]);
   const [formData, setFormData] = useState({
     petName: '',
     ownerName: '',
@@ -10,6 +11,7 @@ const Form = () => {
     symptoms: '',
   });
 
+  /** Handle input form values */
   const handleChange = (ev) => {
     const { name, value } = ev.target;
 
@@ -17,22 +19,41 @@ const Form = () => {
       ...formData,
       [name]: value,
     });
-
-    console.log(formData);
   };
 
+  /** Reset Form */
+  const resetForm = () => {
+    setFormData({
+      petName: '',
+      ownerName: '',
+      email: '',
+      discharged: new Date(),
+      symptoms: '',
+    });
+  };
+
+  /** Add new item */
   const onSubmit = (ev) => {
     ev.preventDefault();
-    console.log(formData);
+    setPatientList([...patientList, formData]);
+    resetForm();
+  };
+
+  const deleteItem = (id) => {
+    const itemSelected = patientList.filter((item, index) => index !== id);
+    setPatientList(itemSelected);
   };
 
   return (
-    <div className="rounded-md flex flex-col justify-center items-center p-5 relative px-4 py-10 bg-slate-900 shadow-lg sm:rounded-3xl sm:p-10 bg-clip-padding bg-opacity-40 border border-slate-600">
-      <form className="w-full max-w-md p-2" onSubmit={onSubmit}>
+    <div className="grid gap-4 lg:grid-cols-2 justify-items-center place-items-center rounded-md p-5 relative px-4 py-10 bg-slate-900 shadow-lg sm:rounded-3xl sm:p-10 bg-clip-padding bg-opacity-40 border border-slate-600">
+      <form
+        className="w-full max-w-md p-2 d-flex justify-center"
+        onSubmit={onSubmit}
+      >
         <div className="flex flex-wrap -mx-3">
-          <div className="w-full md:w-2/4 px-3">
+          <div className="w-full md:w-2/4 px-3 my-3">
             <label
-              className="block uppercase tracking-wide text-swhite text-xs font-bold mb-2"
+              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               htmlFor="petName"
             >
               Pet Name
@@ -46,10 +67,9 @@ const Form = () => {
               type="text"
               placeholder="Enter Pet Name"
             />
-            <small className="text-red-500">{errorMessage}</small>
           </div>
 
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div className="w-full md:w-1/2 px-3 my-3">
             <label
               className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               htmlFor="ownerName"
@@ -67,7 +87,7 @@ const Form = () => {
             />
           </div>
 
-          <div className="w-full md:w-100 px-3 mb-6 md:mb-0">
+          <div className="w-full md:w-100 px-3 my-3">
             <label
               className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               htmlFor="email"
@@ -85,7 +105,7 @@ const Form = () => {
             />
           </div>
 
-          <div className="w-full md:w-100 px-3 mb-6 md:mb-0">
+          <div className="w-full md:w-100 px-3 my-3">
             <label
               className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               htmlFor="discharged"
@@ -102,7 +122,7 @@ const Form = () => {
             />
           </div>
 
-          <div className="w-full md:w-100 px-3 mb-6 md:mb-0">
+          <div className="w-full md:w-100 px-3 my-3">
             <label
               className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               htmlFor="symptoms"
@@ -125,11 +145,12 @@ const Form = () => {
               type="submit"
               className="w-full font-bold py-3 px-4 m-3 rounded bg-indigo-600 hover:bg-indigo-800 text-white"
             >
-              Send
+              Create
             </button>
           </div>
         </div>
       </form>
+      <PatientList patientList={patientList} deleteItem={deleteItem} />
     </div>
   );
 };

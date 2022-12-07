@@ -3,10 +3,16 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      // fontFamily: {
-      //   poppins: ['Poppins', 'sans-serif'],
-      // },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
+      rotate: {
+        17: '17deg',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')],
+  variants: {
+    scrollbar: ['rounded'],
+  },
 };
