@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Icon } from '../Icon/index';
 import { parseDate } from '../../utils/index';
+import Modal from '../../components/Modal/Modal';
 
 const PatientCard = ({ patient, id, deleteItem }) => {
+  const [openModal, setOpenModal] = useState(false);
+
   const {
     FaDog,
     FaUserClock,
@@ -54,7 +57,10 @@ const PatientCard = ({ patient, id, deleteItem }) => {
           </p>
 
           <div className="flex items-center justify-between">
-            <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+            <button
+              onClick={() => setOpenModal(!openModal)}
+              className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+            >
               <AiFillEdit />
             </button>
             <button
@@ -64,6 +70,11 @@ const PatientCard = ({ patient, id, deleteItem }) => {
               <AiFillDelete />
             </button>
           </div>
+
+          {/* Edit Modal */}
+          {openModal && (
+            <Modal openModal={openModal} setOpenModal={setOpenModal} />
+          )}
         </div>
       </div>
     </div>

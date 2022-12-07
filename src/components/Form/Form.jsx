@@ -101,7 +101,7 @@ const Form = () => {
               value={formData?.email}
               onChange={handleChange}
               type="email"
-              placeholder="Enter Email"
+              placeholder="ex: uwnername@email.com"
             />
           </div>
 

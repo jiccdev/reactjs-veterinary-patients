@@ -9,7 +9,7 @@ const Alert = ({
   const { AiOutlineInfoCircle } = Icon;
   return (
     <div
-      class={`flex items-center justify-center text-center text-sm font-bold px-4 py-3 ${bgColor} ${textColor}`}
+      className={`flex items-center justify-center text-center text-sm font-bold px-4 py-3 ${bgColor} ${textColor}`}
       role="alert"
     >
       <span className="pr-1">
