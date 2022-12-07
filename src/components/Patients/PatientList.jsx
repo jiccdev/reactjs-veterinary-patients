@@ -1,10 +1,11 @@
 import React from 'react';
 import Title from '../../components/Section/Title/Title';
 import PatientCard from '../../components/Patients/PatientCard';
+import Alert from '../../components/Alert/Alert';
 
 const PatientList = ({ patientList, deleteItem, ...props }) => {
   return (
-    <div>
+    <div className="h-full w-full flex justify-start flex-col items-center w-100">
       <div>
         <Title titleSection="Patient List" />
       </div>
@@ -19,7 +20,7 @@ const PatientList = ({ patientList, deleteItem, ...props }) => {
             />
           ))
         ) : (
-          <p className="text-white">Not records yet!</p>
+          <Alert>No patients found</Alert>
         )}
       </div>
     </div>

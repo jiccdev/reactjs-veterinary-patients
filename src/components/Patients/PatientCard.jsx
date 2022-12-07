@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from '../Icon/index';
+import { parseDate } from '../../utils/index';
 
 const PatientCard = ({ patient, id, deleteItem }) => {
   const {
@@ -12,7 +13,7 @@ const PatientCard = ({ patient, id, deleteItem }) => {
     AiFillDelete,
   } = Icon;
   return (
-    <div className="flex justify-center m-3 w-96 h-50">
+    <div className="flex justify-center m-3 w-96 h-auto">
       <div className="flex flex-col w-full md:flex-row md:max-w-xl rounded-lg relative shadow-lg sm:rounded-3xl bg-clip-padding bg-opacity-40 border border-slate-600 bg-slate-900">
         <div className="p-6 flex flex-col justify-start w-full">
           <h5 className="flex items-center text-slate-100 text-lg font-medium mb-2 border-b border-slate-600 pb-3">
@@ -43,9 +44,12 @@ const PatientCard = ({ patient, id, deleteItem }) => {
             <span className="text-slate-200"> {patient?.email}</span>
           </p>
 
-          <p className="flex items-center text-slate-100 text-lg font-base mb-2 border-b border-slate-600 pb-3">
+          <p className="flex items-center text-slate-100 text-base font-base mb-2 border-b border-slate-600 pb-3">
             <span className="pr-2">
               <BsCalendarCheck />
+            </span>
+            <span className="text-slate-200">
+              {parseDate(patient?.discharged)}
             </span>
           </p>
 
