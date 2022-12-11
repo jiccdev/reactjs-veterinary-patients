@@ -3,7 +3,7 @@ import { Icon } from '../Icon/index';
 import { parseDate } from '../../utils/index';
 import Modal from '../../components/Modal/Modal';
 
-const PatientCard = ({ patient, id, deleteItem }) => {
+const PatientCard = ({ patient, id, deleteItem, handleChange, onSubmit }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const {
@@ -73,7 +73,13 @@ const PatientCard = ({ patient, id, deleteItem }) => {
 
           {/* Edit Modal */}
           {openModal && (
-            <Modal openModal={openModal} setOpenModal={setOpenModal} />
+            <Modal
+              data={patient}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+              handleChange={handleChange}
+              onSubmit={onSubmit}
+            />
           )}
         </div>
       </div>

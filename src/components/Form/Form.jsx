@@ -150,7 +150,12 @@ const Form = () => {
           </div>
         </div>
       </form>
-      <PatientList patientList={patientList} deleteItem={deleteItem} />
+      <PatientList
+        patientList={patientList}
+        handleChange={handleChange}
+        deleteItem={deleteItem}
+        onSubmit={onSubmit}
+      />
     </div>
   );
 };
